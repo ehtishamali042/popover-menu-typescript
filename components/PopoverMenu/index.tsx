@@ -52,8 +52,9 @@ const PopoverMenu = memo(function PopoverMenu(props: TPopoverMenuProps) {
         outlined={props.buttonOutlined}
         className={props.buttonClassName}
         iconClassName={props.buttonIconClassName}
-        {...('label' in props && { label: props.label })}
-      />
+      >
+        {props.label}
+      </Menu.Button>
 
       <Transition
         as={Fragment}
