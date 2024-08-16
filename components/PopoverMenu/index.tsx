@@ -25,7 +25,7 @@ type TPopoverMenuProps = {
   buttonSize?: 'sm' | 'base';
   buttonOutlined?: boolean;
   items: TPopoverMenuItem[];
-  label?: JSX.Element;
+  label?: JSX.Element | string;
   leftAligned?: boolean;
 };
 
