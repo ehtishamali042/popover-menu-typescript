@@ -14,17 +14,9 @@ export type TPopoverMenuItem = {
   disabled?: boolean;
   clickableWhileDisabled?: boolean;
   separator?: boolean;
-} & (
-  | {
-      onClick: () => void;
-      href?: never;
-    }
-  | {
-      onClick?: never;
-      href: string;
-      target?: string;
-    }
-);
+  onClick: () => void;
+  href?: never;
+};
 
 type TPopoverMenuProps = {
   buttonIcon?: string;
@@ -107,23 +99,11 @@ const PopoverMenu = memo(function PopoverMenu(props: TPopoverMenuProps) {
                       );
                     }
 
-                    if (item.href) {
-                      return (
-                        <Link
-                          href={item.href}
-                          className={className}
-                          target={item.target}
-                        >
-                          {icon} {item.label}
-                        </Link>
-                      );
-                    } else {
-                      return (
-                        <button onClick={item.onClick} className={className}>
-                          {icon} {item.label}
-                        </button>
-                      );
-                    }
+                    return (
+                      <button onClick={item.onClick} className={className}>
+                        {icon} {item.label}
+                      </button>
+                    );
                   }}
                 </Menu.Item>
               ))}
