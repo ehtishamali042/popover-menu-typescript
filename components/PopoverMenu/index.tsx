@@ -3,7 +3,6 @@ import { Fragment, memo } from 'react';
 
 import classnames from 'classnames';
 import { groupBy } from 'lodash';
-import Link from 'next/link';
 
 export type TPopoverMenuItem = {
   groupId: string;
@@ -15,7 +14,6 @@ export type TPopoverMenuItem = {
   clickableWhileDisabled?: boolean;
   separator?: boolean;
   onClick: () => void;
-  href?: never;
 };
 
 type TPopoverMenuProps = {
