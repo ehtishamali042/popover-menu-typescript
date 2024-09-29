@@ -9,13 +9,13 @@ export default function Home() {
           {
             label: 'A',
             groupId: 'default',
-            id: 'a' as const,
+            id: 'a',
             onClick: () => console.log('You clicked A')
           },
           {
             label: 'B',
             groupId: 'default',
-            id: 'b' as const,
+            id: 'b',
             onClick: () => console.log('You clicked B')
           }
         ]}
@@ -27,8 +27,9 @@ export default function Home() {
           provided, Typescript should enforce `onClick` in each item.
           
           Ensure that the item argument holds exactly what the item is, the
-          color should be succesfully logged, and on hover, Typescript should
-          show that the only possibilities for color is "red" or "blue". */}
+          `color` key should be allowed and not underlined. And putting mouse
+          over `item.color` in the fallback, Typescript should show that the
+          only possibilities for color is "red" or "blue". */}
       <PopoverMenu
         label="Goal"
         items={[
