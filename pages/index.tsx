@@ -24,7 +24,11 @@ export default function Home() {
       {/* Do not modify this file. Modify @/components/PopoverMenu/index.tsx to
           make the following work. When `onItemClick` is provided, it should
           allow `onClick` to be optional. However if `onItemClick` is not
-          provided, Typescript should enforce `onClick` in each item. */}
+          provided, Typescript should enforce `onClick` in each item.
+          
+          Ensure that the item argument holds exactly what the item is, the
+          color should be succesfully logged, and on hover, Typescript should
+          show that the only possibilities for color is "red" or "blue". */}
       <PopoverMenu
         label="Goal"
         items={[
