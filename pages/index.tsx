@@ -1,4 +1,4 @@
-import PopoverMenu from '@/components/PopoverMenu';
+import PopoverMenu from "@/components/PopoverMenu";
 
 export default function Home() {
   return (
@@ -7,17 +7,19 @@ export default function Home() {
         label="Current"
         items={[
           {
-            label: 'A',
-            groupId: 'default',
-            id: 'a',
-            onClick: () => console.log('You clicked A')
+            label: "A",
+            groupId: "default",
+            id: "a",
+            onClick: () => console.log("You clicked A"),
+            color: "blue",
           },
           {
-            label: 'B',
-            groupId: 'default',
-            id: 'b',
-            onClick: () => console.log('You clicked B')
-          }
+            label: "B",
+            groupId: "default",
+            id: "b",
+            onClick: () => console.log("You clicked B"),
+            color: "red",
+          },
         ]}
       />
 
@@ -34,21 +36,21 @@ export default function Home() {
         label="Goal"
         items={[
           {
-            label: 'A',
-            groupId: 'default',
-            id: 'a',
-            onClick: () => console.log('You clicked A'),
-            color: 'blue' as const
+            label: "A",
+            groupId: "default",
+            id: "a",
+            onClick: () => console.log("You clicked A"),
+            color: "blue",
           },
           {
-            label: 'B',
-            groupId: 'default',
-            id: 'b',
-            color: 'red' as const
-          }
+            label: "B",
+            groupId: "default",
+            id: "b",
+            color: "red",
+          },
         ]}
-        onItemClick={item =>
-          console.log('Fallback, you clicked item with color:', item.color)
+        onItemClick={(item) =>
+          console.log("Fallback, you clicked item with color:", item.color)
         }
       />
     </main>
