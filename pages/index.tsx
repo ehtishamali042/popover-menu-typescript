@@ -33,11 +33,13 @@ export default function Home() {
             groupId: "default",
             id: "a" as const,
             onClick: () => console.log("You clicked A"),
+            color: "blue",
           },
           {
             label: "B",
             groupId: "default",
             id: "b" as const,
+            color: "red",
           },
         ]}
         onItemClick={(item) => console.log("Fallback, you clicked: ", item.id)}

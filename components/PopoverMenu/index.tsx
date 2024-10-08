@@ -15,6 +15,7 @@ export type TPopoverMenuItem = {
   clickableWhileDisabled?: boolean;
   separator?: boolean;
   onClick?: () => void;
+  color: "red" | "blue";
 };
 
 type BasePopoverProps = {
