@@ -43,9 +43,9 @@ const PopoverMenu = function PopoverMenu<T extends TPopoverMenuItem>(
   props: PopoverProps<T>
 ) {
   // Group items by separator
-  const groupedItems = Object.values(groupBy(props.items, "groupId")) as Array<
-    TPopoverMenuItem[]
-  >;
+  const groupedItems = Object.values(
+    groupBy<TPopoverMenuItem>(props.items, "groupId")
+  );
 
   return (
     <Menu as="div" className="relative inline-block">
