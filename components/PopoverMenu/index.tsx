@@ -15,7 +15,6 @@ export type TPopoverMenuItem = {
   clickableWhileDisabled?: boolean;
   separator?: boolean;
   onClick?: () => void;
-  color: "red" | "blue";
 };
 
 type BasePopoverProps = {
@@ -28,26 +27,25 @@ type BasePopoverProps = {
   leftAligned?: boolean;
 };
 
-type PropoverPropsWithOnClick = {
-  items: Array<TPopoverMenuItem>; // Items don't require onClick if onItemClick is provided
-  onItemClick: (item: TPopoverMenuItem) => void;
-};
-type PropoverPropsWithoutOnClick = {
-  items: Array<MakePropRequired<TPopoverMenuItem, "onClick">>; // Items requires onClick if onItemClick is not provided
-  onItemClick?: never;
-};
-
-type ConditionalPopoverProps =
-  | PropoverPropsWithOnClick
-  | PropoverPropsWithoutOnClick;
-
-type TPopoverMenuProps = BasePopoverProps & ConditionalPopoverProps;
-
-const PopoverMenu = memo(function PopoverMenu(props: TPopoverMenuProps) {
-  // Group items by separator
-  const groupedItems: Array<TPopoverMenuItem[]> = Object.values(
-    groupBy(props.items, "groupId")
+type PopoverProps<T> = BasePopoverProps &
+  (
+    | {
+        items: Array<T & MakePropRequired<TPopoverMenuItem, "onClick">>; // Items requires onClick if onItemClick is not provided
+        onItemClick?: never;
+      }
+    | {
+        items: Array<T>; // Items don't require onClick if onItemClick is provided
+        onItemClick: (item: T) => void;
+      }
   );
+
+const PopoverMenu = function PopoverMenu<T extends TPopoverMenuItem>(
+  props: PopoverProps<T>
+) {
+  // Group items by separator
+  const groupedItems = Object.values(groupBy(props.items, "groupId")) as Array<
+    TPopoverMenuItem[]
+  >;
 
   return (
     <Menu as="div" className="relative inline-block">
@@ -127,6 +125,6 @@ const PopoverMenu = memo(function PopoverMenu(props: TPopoverMenuProps) {
       </Transition>
     </Menu>
   );
-});
+};
 
-export default PopoverMenu;
+export default memo(PopoverMenu) as unknown as typeof PopoverMenu;

@@ -40,13 +40,13 @@ export default function Home() {
             groupId: "default",
             id: "a",
             onClick: () => console.log("You clicked A"),
-            color: "blue",
+            color: "blue" as const,
           },
           {
             label: "B",
             groupId: "default",
             id: "b",
-            color: "red",
+            color: "red" as const,
           },
         ]}
         onItemClick={(item) =>
