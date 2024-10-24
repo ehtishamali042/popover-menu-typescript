@@ -127,6 +127,8 @@ const PopoverMenu = function PopoverMenu<T extends TPopoverMenuItem>(
   );
 };
 
-export default memo(PopoverMenu) as <T extends TPopoverMenuItem>(
-  props: PopoverProps<T>
-) => JSX.Element;
+function typedMemo<T extends React.ComponentType<any>>(Component: T) {
+  return memo(Component) as unknown as T;
+}
+
+export default typedMemo(PopoverMenu);
